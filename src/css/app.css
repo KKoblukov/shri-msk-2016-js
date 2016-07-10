@@ -1,11 +1,12 @@
 @import "reset.css";
 
-html, body {
+html,
+body {
     min-height: 100%;
 }
 
 body {
-    background-color: #ACC0C1;
+    background-color: #acc0c1;
 }
 
 .container {
@@ -34,7 +35,7 @@ body {
     position: relative;
 }
 
-.level_0:after {
+.level_0::after {
     content: ' ';
     display: block;
     position: absolute;
@@ -82,7 +83,7 @@ body {
 }
 
 .door_disabled {
-    opacity: .7;
+    opacity: 0.7;
 }
 
 .door_level_0 {
@@ -116,8 +117,8 @@ body {
     bottom: 0;
     top: 0;
 
-    background-color: rgba(0,0,0,.3);
-    transition: opacity .3s;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s;
 
     display: flex;
     align-items: center;
@@ -160,6 +161,7 @@ body {
 .popup__content_level_2 {
     /* Можно поставить какую-нибудь свою картинку двери на бек */
 }
+
 .popup__content_level_3 {
     background-image: url(../img/door__box.png);
     background-size: contain;
@@ -177,12 +179,12 @@ body {
     height: 64px;
     border-radius: 64px;
     background-color: #583319;
-    border: 1px solid #F3E9E0;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);
+    border: 1px solid #f3e9e0;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
 
-    transition: background-color .3s;
+    transition: background-color 0.3s;
 }
 
 .door-riddle__button_pressed {
-    background-color: #F3E5D9;
+    background-color: #f3e5d9;
 }

@@ -5,6 +5,7 @@
  * @param {Number} number
  * @param {Function} onUnlock
  */
+
 function Door0(number, onUnlock) {
     DoorBase.apply(this, arguments);
 
