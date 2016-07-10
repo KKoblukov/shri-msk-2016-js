@@ -1,5 +1,3 @@
-'use strict';
-
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
 const cssImport = require('postcss-import');
@@ -12,6 +10,7 @@ const postcss = require('gulp-postcss');
 const size = require('postcss-size');
 const svgo = require('postcss-svgo');
 const uglify = require('gulp-uglify');
+const uncss = require('postcss-uncss');
 
 gulp.task('default', ['server'], () => {
     gulp.watch('src/index.html', (event) => {
@@ -45,15 +44,21 @@ gulp.task('html', () => {
 
 gulp.task('css', () => {
     const processors = [
-        cssImport,
+        cssImport({
+            plugins: [
+                uncss({
+                    html: ['./src/index.html']
+                })
+            ]
+        }),
         size,
         inlineSVG,
         svgo,
         cssNext({
-            autoprefixer: false
+            autoprefixer: ['ie >= 10', '> 2% in RU']
         }),
         cssNano({
-            autoprefixer: ['ie >= 10', '> 2% in RU']
+            autoprefixer: false
         })
     ];
     return gulp.src('src/css/*.css')
