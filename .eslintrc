@@ -11,4 +11,10 @@
     "node": true
   },
   "extends": "yandex",
+  "rules": {
+    "strict": [2, 'global'],
+    "func-names": 0,
+    "vars-on-top": 0,
+    "no-inner-declarations": 0,
+  }
 }
