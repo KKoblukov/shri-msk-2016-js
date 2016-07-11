@@ -5,9 +5,11 @@ const cssNano = require('cssnano');
 const cssNext = require('postcss-cssnext');
 const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin');
+const imagemin = require('gulp-imagemin');
 const inlineSVG = require('postcss-inline-svg');
 const postcss = require('gulp-postcss');
 const size = require('postcss-size');
+const sourcemaps = require('gulp-sourcemaps');
 const svgo = require('postcss-svgo');
 const uglify = require('gulp-uglify');
 const uncss = require('postcss-uncss');
@@ -25,7 +27,7 @@ gulp.task('default', ['server'], () => {
 });
 
 gulp.task('build', () => {
-    gulp.run('html', 'css');
+    gulp.run('html', 'css', 'js', 'images');
 });
 
 // HTML
@@ -62,7 +64,9 @@ gulp.task('css', () => {
         })
     ];
     return gulp.src('src/css/*.css')
+    .pipe(sourcemaps.init())
     .pipe(postcss(processors))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./dist/css/'))
     .pipe(browserSync.stream());
 });
@@ -72,10 +76,20 @@ gulp.task('css', () => {
 
 gulp.task('js', () => {
     gulp.src('src/js/*.js')
+    .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/js'))
     .pipe(browserSync.stream());
+});
+
+// Images
+
+gulp.task('images', () => {
+    gulp.src('src/images/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('dist/images'));
 });
 
 // Server
