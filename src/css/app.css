@@ -233,13 +233,9 @@ body {
     display: none;
 }
 
-.door-riddle__dead {
-    background-image: url(../images/monster.png);
-}
-
 .boss-riddle__eye {
     position: absolute;
-    size: 80px;
+    size: 80px 120px;
 }
 
 .boss-riddle__eye_0 {
