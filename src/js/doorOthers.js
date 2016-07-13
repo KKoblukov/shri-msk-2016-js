@@ -178,11 +178,40 @@ Door2.prototype.constructor = DoorBase;
 function Box(number, onUnlock) {
     DoorBase.apply(this, arguments);
 
-    // ==== Напишите свой код для открытия сундука здесь ====
-    // Для примера сундук откроется просто по клику на него
-    this.popup.addEventListener('click', function () {
-        this.unlock();
+    var eyes = [
+        this.popup.querySelector('.boss-riddle__eye'),
+        this.popup.querySelector('.boss-riddle__eye'),
+    ];
+
+    eyes.forEach(function (b) {
+        b.addEventListener('pointerdown', _onEyePointerDown.bind(this));
+        b.addEventListener('pointerup', _onEyePointerUp.bind(this));
+        b.addEventListener('pointercancel', _onEyePointerUp.bind(this));
+        b.addEventListener('pointerleave', _onEyePointerUp.bind(this));
     }.bind(this));
+
+    function _onEyePointerDown(e) {
+        e.target.classList.add('boss-riddle__eye_pressed');
+        checkCondition.apply(this);
+    }
+
+    function _onEyePointerUp(e) {
+        e.target.classList.remove('boss-riddle__eye_pressed');
+    }
+
+    function checkCondition() {
+        var isOpened = true;
+        eyes.forEach(function (b) {
+            if (!b.classList.contains('boss-riddle__eye_pressed')) {
+                isOpened = false;
+            }
+        });
+
+        if (isOpened) {
+            this.unlock();
+        }
+    }
+
     // ==== END Напишите свой код для открытия сундука здесь ====
 
     this.showCongratulations = function () {

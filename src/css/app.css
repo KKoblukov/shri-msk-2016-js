@@ -192,10 +192,6 @@ body {
     background-color: #f3e5d9;
 }
 
-.door-riddle__dead {
-    background-image: url(../images/monster.png);
-}
-
 .door-riddle__key {
     position: absolute;
     size: 64px;
@@ -235,4 +231,23 @@ body {
 
 .door-riddle__key_unlocked {
     display: none;
+}
+
+.door-riddle__dead {
+    background-image: url(../images/monster.png);
+}
+
+.boss-riddle__eye {
+    position: absolute;
+    size: 80px;
+}
+
+.boss-riddle__eye_0 {
+    top: 27%;
+    left: 24%;
+}
+
+.boss-riddle__eye_1 {
+    top: 27%;
+    left: 59%;
 }
