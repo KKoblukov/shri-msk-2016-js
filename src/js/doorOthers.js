@@ -10,8 +10,8 @@ function Door0(number, onUnlock) {
 
     var buttons = [
         this.popup.querySelector('.door-riddle__button_0'),
-        this.popup.querySelector('.door-riddle__button_1'),
-        this.popup.querySelector('.door-riddle__button_2')
+        // this.popup.querySelector('.door-riddle__button_1'),
+        // this.popup.querySelector('.door-riddle__button_2')
     ];
 
     buttons.forEach(function (b) {
@@ -79,6 +79,7 @@ function Door1(number, onUnlock) {
     }.bind(this));
 
     function _onKeyPointerDown(e) {
+        e.target.setPointerCapture(e.pointerId);
         e.target.classList.add('door-riddle__key_pressed');
         moveAt(e);
     }
