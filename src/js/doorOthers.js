@@ -10,8 +10,8 @@ function Door0(number, onUnlock) {
 
     var buttons = [
         this.popup.querySelector('.door-riddle__button_0'),
-        // this.popup.querySelector('.door-riddle__button_1'),
-        // this.popup.querySelector('.door-riddle__button_2')
+        this.popup.querySelector('.door-riddle__button_1'),
+        this.popup.querySelector('.door-riddle__button_2')
     ];
 
     buttons.forEach(function (b) {
