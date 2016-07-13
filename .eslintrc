@@ -16,5 +16,6 @@
     "func-names": 0,
     "vars-on-top": 0,
     "no-inner-declarations": 0,
+    "no-shadow": 0,
   }
 }
