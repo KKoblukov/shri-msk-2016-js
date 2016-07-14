@@ -2,7 +2,6 @@ const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
 const cssImport = require('postcss-import');
 const cssNano = require('cssnano');
-const cssNext = require('postcss-cssnext');
 const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin');
 const imagemin = require('gulp-imagemin');
@@ -56,11 +55,8 @@ gulp.task('css', () => {
         size,
         inlineSVG,
         svgo,
-        cssNext({
-            autoprefixer: ['ie >= 10', '> 2% in RU']
-        }),
         cssNano({
-            autoprefixer: false
+            autoprefixer: ['ie >= 10', '> 2% in RU']
         })
     ];
     return gulp.src('src/css/*.css')
